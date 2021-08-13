@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="studentDataModel"
+            type="com.example.a13august_mvvm.StudentViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".HomeFragment">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
+            android:padding="@dimen/_8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:id="@+id/edittext_name"
+                android:text="@={studentDataModel.name}"
+                android:drawablePadding="@dimen/_8dp"
+                android:hint="@string/home_name_hint"
+                android:drawableStart="@drawable/ic_person"
+                android:textSize="@dimen/textsize_name" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
+            android:padding="@dimen/_8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:id="@+id/edittext_course"
+                android:hint="@string/home_course_hint"
+                android:text="@={studentDataModel.course}"
+                android:drawablePadding="@dimen/_8dp"
+                android:drawableStart="@drawable/ic_list"
+                android:textSize="@dimen/textsize_name" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/save_btn_msg"
+            android:padding="@dimen/_8dp"
+            app:icon="@drawable/ic_add"
+            android:id="@+id/button_save"
+            android:onClick="@{()->studentDataModel.insert()}"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_margin="@dimen/_8dp"
+
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
+            android:padding="@dimen/_8dp"
+            tools:listitem="@layout/student_layout"
+            android:id="@+id/recyclerview_studentdata"
+            />
+    </LinearLayout>
+
+    </ScrollView>
+</layout>
